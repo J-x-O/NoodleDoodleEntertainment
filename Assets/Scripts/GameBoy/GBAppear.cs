@@ -10,7 +10,12 @@ public class GBAppear : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gba.Play(anim.name);
+            gba.SetBool("popup", true);
         }
+    }
+
+    public void setBoolPopUpFalse()
+    {
+        gba.SetBool("popup", false);
     }
 }
