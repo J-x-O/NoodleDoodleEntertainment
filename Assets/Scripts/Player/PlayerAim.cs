@@ -16,5 +16,9 @@ namespace Player {
             float3 playerPos = camera.WorldToViewportPoint(position);
             aimDirection = new float3(math.normalize(mousePos.xy - playerPos.xy), 0);
         }
+
+        public float3 GetAimDirection() {
+            return aimDirection;
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Player {
         [SerializeField] private float accelerationMultiplier = 30.0f;
         [SerializeField] private float inAirMultiplier = 0.2f;
         [SerializeField] private float maxAirVelocity = 4.0f;
-        [SerializeField] private LayerMask collisionMask = new LayerMask{value = 1 << 9};
+        [SerializeField] private LayerMask collisionMask = new LayerMask {value = 1 << 9};
         private bool isGrounded;
         private new Rigidbody rigidbody;
         private float3 velocity;
