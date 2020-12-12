@@ -10,6 +10,9 @@ namespace Player {
         [SerializeField] private float inAirMultiplier = 0.2f;
         [SerializeField] private float maxAirVelocity = 4.0f;
         [SerializeField] private LayerMask collisionMask = new LayerMask{value = 1 << 9};
+
+        [SerializeField] Animator animator;
+
         private bool isGrounded;
         private new Rigidbody rigidbody;
         private float3 velocity;
@@ -36,6 +39,12 @@ namespace Player {
 
             if (Physics.Raycast(transform.position, velocity.xzz, out var hitInfo, 0.6f, collisionMask)) Bonk(hitInfo);
             rigidbody.velocity = velocity;
+
+            //set velocity for animator
+            animator.SetFloat("Velocity", velocity.x + velocity.y);
+            animator.SetFloat("HorizontalVelocity", velocity.x);
+            animator.SetFloat("VerticalVelocity", velocity.y);
+            
         }
 
         private void Jump() {
