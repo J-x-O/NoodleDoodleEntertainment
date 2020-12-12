@@ -173,7 +173,9 @@ MonoBehaviour:
   maxDistance: 5
   aim: {fileID: 1992278270392100893}
   playerMovement: {fileID: 1992278271588773558}
-  boostAmount: 1
+  boostAmount: 5
+  resourceCost: 0.1
+  resourceManager: {fileID: 3180562550920660265}
 --- !u!1 &1992278271588773545
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +191,7 @@ GameObject:
   - component: {fileID: 1992278271588773559}
   - component: {fileID: 1992278271588773558}
   - component: {fileID: 1992278271588773552}
+  - component: {fileID: 3180562550920660265}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -325,6 +328,20 @@ MonoBehaviour:
   abilityOrigin: {fileID: 1992278271588773555}
   fireThruster: {fileID: 1992278270828832867}
   iceBeam: {fileID: 1992278271723624503}
+--- !u!114 &3180562550920660265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992278271588773545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be8aabd98cb46948ae0712d0cb6cdc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  balanceBonusMultiplier: 2
 --- !u!1 &1992278271723624489
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +389,9 @@ MonoBehaviour:
   maxDistance: 5
   aim: {fileID: 1992278270392100893}
   playerMovement: {fileID: 1992278271588773558}
-  boostAmount: 0.2
+  boostAmount: 1
+  resourceCost: 0.1
+  resourceManager: {fileID: 3180562550920660265}
 --- !u!1 &1992278271873836699
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerAim : MonoBehaviour {
-        internal float3 AimDirection { get; private set; }
-
         [SerializeField] private new Camera camera;
         [SerializeField] private Transform center;
+        internal float3 AimDirection { get; private set; }
 
         private void Update() {
             var trans = transform;
@@ -16,7 +15,6 @@ namespace Player {
             AimDirection = new float3(math.normalize(mousePos.xy - playerPos.xy), 0);
             trans.position = (float3) center.position + AimDirection;
             trans.rotation = Quaternion.LookRotation(AimDirection, Vector3.up);
-
         }
     }
 }

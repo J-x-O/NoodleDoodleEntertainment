@@ -3,14 +3,14 @@
 //-----------------------------------------------------------------------------
 
 namespace UnityEngine.Rendering.HighDefinition {
-    [GenerateHLSL()]
+    [GenerateHLSL]
     public enum HDShadowFilteringQuality {
         Low = 0,
         Medium = 1,
         High = 2
     }
 
-    [GenerateHLSL()]
+    [GenerateHLSL]
     public enum ShaderOptions {
         CameraRelativeRendering = 1, // Rendering sets the origin of the world to the position of the primary (scene view) camera
         PreExposition = 1,

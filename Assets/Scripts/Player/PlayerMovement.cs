@@ -59,7 +59,7 @@ namespace Player {
         }
 
         internal void Boost(float3 boost) {
-            rigidbody.velocity += (Vector3) boost;
+            rigidbody.velocity += (Vector3) boost * Time.deltaTime;
         }
     }
 }
