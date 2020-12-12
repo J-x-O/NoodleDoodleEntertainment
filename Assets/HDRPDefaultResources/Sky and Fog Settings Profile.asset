@@ -27,14 +27,14 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5319509, g: 0.6735664, b: 0.8113208, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.044010323, g: 0.13303937, b: 0.21698111, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 312.7
+    m_Value: 291.15
     min: 0
   mipFogMaxMip:
     m_OverrideState: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
     min: 0
   baseHeight:
     m_OverrideState: 1
-    m_Value: -46.29
+    m_Value: -103.5
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 202.6
+    m_Value: 313.8
   albedo:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -63,7 +63,7 @@ MonoBehaviour:
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 10.8
+    m_Value: 19.9
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   rotation:
     m_OverrideState: 1
-    m_Value: 74
+    m_Value: 67
     min: 0
     max: 360
   skyIntensityMode:
