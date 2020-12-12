@@ -57,5 +57,9 @@ namespace Player {
 
             isGrounded = false;
         }
+
+        internal void Boost(float3 boost) {
+            rigidbody.velocity += (Vector3) boost;
+        }
     }
 }
