@@ -173,8 +173,8 @@ MonoBehaviour:
   maxDistance: 5
   aim: {fileID: 1992278270392100893}
   playerMovement: {fileID: 1992278271588773558}
-  boostAmount: 5
-  resourceCost: 0.1
+  boostAmount: 10
+  resourceCost: 0.25
   resourceManager: {fileID: 3180562550920660265}
 --- !u!1 &1992278271588773545
 GameObject:
@@ -386,11 +386,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f049633f617441ab9677d5005cd4756a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 5
+  maxDistance: 10
   aim: {fileID: 1992278270392100893}
   playerMovement: {fileID: 1992278271588773558}
-  boostAmount: 1
-  resourceCost: 0.1
+  boostAmount: 5
+  resourceCost: 0.25
   resourceManager: {fileID: 3180562550920660265}
 --- !u!1 &1992278271873836699
 GameObject:
