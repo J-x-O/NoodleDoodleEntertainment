@@ -15,9 +15,12 @@ namespace Player {
         private readonly Collider[] cache = new Collider[8];
 
         [SerializeField] ParticleSystem particleSystem1, particleSystem2;
-
+        private float normalEmision, normalSize;
         private bool boosting, subemitter = false;
-
+        private void OnEnable() {
+            normalEmision = particleSystem1.emissionRate;
+            normalSize = particleSystem1.startSize;
+        }
 
         private void Update() {
             if(boosting) {
@@ -63,6 +66,11 @@ namespace Player {
                 trans.localScale = new float3(scale.xy, distance);
                 var cost = resourceCost * Time.deltaTime;
                 playerMovement.Boost(aimDirection * resourceManager.UseIce(cost) * boostAmount);
+
+                particleSystem1.emissionRate = normalEmision / 4 + (normalEmision * 3 / 4 * ((resourceManager.getPower() - 1) / 2));
+                particleSystem1.startSize = normalSize / 4 + (normalSize * 3 / 4 * ((resourceManager.getPower() - 1) / 2));
+
+                
             }
         }
 

@@ -11,7 +11,13 @@ namespace Player {
         [SerializeField] private ResourceManager resourceManager;
 
         [SerializeField] ParticleSystem particleSystem;
+        private float normalEmision, normalSize; 
         private bool boosting = false;
+
+        private void OnEnable() {
+            normalEmision = particleSystem.emissionRate;
+            normalSize = particleSystem.startSize;
+        }
 
         private void Update() {
             if(boosting) {
@@ -24,6 +30,9 @@ namespace Player {
                 trans.localScale = new float3(scale.xy, distance);
                 var cost = resourceCost * Time.deltaTime;
                 playerMovement.Boost(-aimDirection * resourceManager.UseFire(cost) * boostAmount);
+
+                particleSystem.emissionRate = normalEmision/4 + (normalEmision * 3/4 * ((resourceManager.getPower()-1)/2));
+                particleSystem.startSize = normalSize / 4 + (normalSize * 3 / 4 * ((resourceManager.getPower() - 1) / 2));
             }
         }
 
