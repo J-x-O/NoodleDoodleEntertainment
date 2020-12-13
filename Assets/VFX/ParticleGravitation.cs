@@ -7,13 +7,16 @@ public class ParticleGravitation : MonoBehaviour
     private ParticleSystem particleSystem;
     private ParticleSystem.Particle[] particles;
 
-    [SerializeField] float speed = 2.6f;
+    [SerializeField] float speed1 = 2.6f;
 
     [SerializeField] Transform gravityCenter;
+
+    private Vector3 lastPosition;
 
     private void Initialize() {
         particleSystem = GetComponent<ParticleSystem>();
         particles = new ParticleSystem.Particle[particleSystem.maxParticles];
+        lastPosition = gravityCenter.position;
     }
 
     private void OnEnable() {
@@ -32,13 +35,16 @@ public class ParticleGravitation : MonoBehaviour
 
         int length = particleSystem.GetParticles(particles);
         for (int i = 0; i < length; i++) {
-            Vector3 position = particles[i].position;
-            Vector3 distance = gravityCenter.position - position;
+            Vector3 distance = gravityCenter.position - particles[i].position;
             Vector3 direction = distance.normalized;
-            direction *= speed * deltaTime * distance.sqrMagnitude;
-            particles[i].position += direction;
+
+            //direction *= speed2 * distance.magnitude * deltaTime / (particles[i].remainingLifetime * speed1);
+            direction *= deltaTime * speed1 * distance.magnitude; 
+            particles[i].position += direction + (gravityCenter.position-lastPosition);
         }
         particleSystem.SetParticles(particles, length);
+
+        lastPosition = gravityCenter.position;
     }
 }
 

@@ -22,6 +22,15 @@ namespace Player {
         private void AddHeat(float value) {
             heat = math.clamp(heat + value, 0.0f, 1.0f);
             slider.value = heat;
+            
+        }
+
+        public float getHeat() {
+            return heat;
+        }
+
+        public float getPower() {
+            return Power;
         }
     }
 }
