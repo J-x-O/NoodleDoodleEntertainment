@@ -23,10 +23,14 @@ namespace Player {
         }
         public AudioSource audioSource;
 
-        private void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.volume = 0.2f;
+        private void Start()
+
+        {
+
+            audioSource = GetComponent<AudioSource>();
+
+            audioSource.volume = 0.2f;
+
         }
 
         private void Update() {
@@ -82,12 +86,16 @@ namespace Player {
         }
 
         public void Toggle(bool value) {
-            if (value)
+            if (value)
+
             {
-                particleSystem1.Play();
-                audioSource.Play();
+                particleSystem1.Play();
+
+                audioSource.Play();
+
             }
-            else
+            else
+
             {
                 particleSystem1.Stop();
                 particleSystem2.Stop();
