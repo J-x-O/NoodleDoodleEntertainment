@@ -17,7 +17,7 @@ namespace Player {
         private void Update() {
             var trans = transform;
             var origin = trans.position;
-            var aimDirection = aim.AimDirection;
+            var aimDirection = aim.aimDirection;
             var distance = maxDistance;
             if (Physics.Raycast(origin, aimDirection, out var hitInfo, maxDistance, collisionMask)) {
                 var hitPosition = hitInfo.point;

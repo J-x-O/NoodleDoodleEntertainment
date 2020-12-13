@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerAim : MonoBehaviour {
-        private float3 aimDirection;
+        public float3 aimDirection;
         private new Camera camera;
 
         private void Awake() {

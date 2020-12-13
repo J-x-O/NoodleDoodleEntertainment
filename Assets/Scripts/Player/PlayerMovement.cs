@@ -12,7 +12,6 @@ namespace Player {
 
         [SerializeField] Animator animator;
 
-        [SerializeField] private LayerMask collisionMask = new LayerMask {value = 1 << 9};
         [SerializeField] private PhysicMaterial defaultMaterial, slidingMaterial;
         private readonly Collider[] cache = new Collider[10];
         private new Collider collider;
