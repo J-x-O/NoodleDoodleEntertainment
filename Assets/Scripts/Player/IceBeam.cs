@@ -17,7 +17,13 @@ namespace Player {
         [SerializeField] ParticleSystem particleSystem1, particleSystem2;
 
         private bool boosting, subemitter = false;
+        public AudioSource audioSource;
 
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = 0.2f;
+        }
 
         private void Update() {
             if(boosting) {
@@ -67,10 +73,16 @@ namespace Player {
         }
 
         public void Toggle(bool value) {
-            if (value) particleSystem1.Play();
-            else {
+            if (value)
+            {
+                particleSystem1.Play();
+                audioSource.Play();
+            }
+            else
+            {
                 particleSystem1.Stop();
                 particleSystem2.Stop();
+                audioSource.Stop();
             }
             boosting = value;
         }
