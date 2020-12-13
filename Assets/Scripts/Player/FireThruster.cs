@@ -13,6 +13,13 @@ namespace Player {
         [SerializeField] ParticleSystem particleSystem;
         private float normalEmision, normalSize; 
         private bool boosting = false;
+        private AudioSource audioSource;
+
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = 0.2f;
+        }
 
         private void OnEnable() {
             normalEmision = particleSystem.emissionRate;
@@ -37,8 +44,16 @@ namespace Player {
         }
 
         public void Toggle(bool value) {
-            if (value) particleSystem.Play();
-            else particleSystem.Stop();
+            if (value)
+            {
+                particleSystem.Play();
+                audioSource.Play();
+            }
+            else
+            {
+                particleSystem.Stop();
+                audioSource.Stop();
+            }
             boosting = value;
         }
     }
