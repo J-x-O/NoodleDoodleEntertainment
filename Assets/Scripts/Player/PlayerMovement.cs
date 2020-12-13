@@ -46,12 +46,7 @@ namespace Player {
             //set velocity for animator
             animator.SetFloat("Velocity", velocity.x + velocity.y);
             animator.SetFloat("HorizontalVelocity", velocity.x);
-            animator.SetFloat("VerticalVelocity", velocity.y);
-
-            if (Input.GetKeyDown(KeyCode.W)) {
-                animator.rootRotation();
-            }
-            
+            animator.SetFloat("VerticalVelocity", velocity.y);          
             
         }
 
