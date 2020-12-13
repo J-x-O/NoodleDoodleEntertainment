@@ -45,6 +45,7 @@ namespace DefaultNamespace {
 
         public void Win() {
             Debug.Log("conglaterations, you won. gg ez");
+            Application.Quit();
         }
     }
 }
