@@ -7,6 +7,7 @@ namespace Player {
     {
         private bool frozen = false;
         private float frozenTime = 0;
+        public GameObject ice;
 
         // Start is called before the first frame update
         void Start()
@@ -19,13 +20,19 @@ namespace Player {
         {
             if(frozen) {
                 frozenTime -= Time.deltaTime;
-                if (frozenTime <= 0) frozen = false;
+                if (frozenTime <= 0)
+                {
+                    frozen = false;
+                    ice.SetActive(false);
+                }
+                
             } 
         }
 
         public void freeze(float duration) {
             frozen = true;
             frozenTime = duration;
+            ice.SetActive(true);
         }
     }
 }
