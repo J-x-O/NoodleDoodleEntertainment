@@ -8,7 +8,7 @@ namespace Player {
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private float boostAmount;
         [SerializeField] [Range(0.0f, 1.0f)] private float resourceCost;
-        [SerializeField] private ResourceManager resourceManager;
+        //[SerializeField] private ResourceManager resourceManager;
         [SerializeField] private float iceDuration;
         [SerializeField] private IceSheet iceSheetPrefab;
         [SerializeField] private LayerMask collisionMask;
@@ -38,7 +38,7 @@ namespace Player {
             float3 scale = trans.localScale;
             trans.localScale = new float3(scale.xy, distance);
             var cost = resourceCost * Time.deltaTime;
-            playerMovement.Boost(aimDirection * resourceManager.UseIce(cost) * boostAmount);
+            playerMovement.Boost(aimDirection * boostAmount);
         }
 
         public void Toggle(bool value) {
