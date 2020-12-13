@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1992278270272153542}
   - component: {fileID: 1992278270272153541}
   - component: {fileID: 1992278270272153540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992278270392100892}
   - component: {fileID: 1992278270392100893}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AbilityOrigin
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992278270828832866}
   - component: {fileID: 1992278270828832867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireThruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1992278271588773558}
   - component: {fileID: 1992278271588773552}
   - component: {fileID: 3180562550920660265}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992278271588773545}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9d07600669a978043910926aafe42da4, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -305,13 +305,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 8
-  dragCoefficient: 4
-  accelerationMultiplier: 30
+  accelerationMultiplier: 20
   inAirMultiplier: 0.2
   maxAirVelocity: 4
   collisionMask:
     serializedVersion: 2
     m_Bits: 512
+  defaultMaterial: {fileID: 13400000, guid: 9d07600669a978043910926aafe42da4, type: 2}
+  slidingMaterial: {fileID: 13400000, guid: 229c72491dcedb74e93b563dbad620a8, type: 2}
 --- !u!114 &1992278271588773552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992278271723624502}
   - component: {fileID: 1992278271723624503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IceBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,6 +393,12 @@ MonoBehaviour:
   boostAmount: 1
   resourceCost: 0.1
   resourceManager: {fileID: 3180562550920660265}
+  iceDuration: 2
+  iceSheetPrefab: {fileID: 5056385513687811164, guid: 0cb77b6352560674191d320cdbc7159d,
+    type: 3}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1992278271873836699
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +410,7 @@ GameObject:
   - component: {fileID: 1992278271873836696}
   - component: {fileID: 1992278271873836711}
   - component: {fileID: 1992278271873836710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +490,7 @@ GameObject:
   - component: {fileID: 3718159359293580394}
   - component: {fileID: 2361582773480598410}
   - component: {fileID: 3875675864064951848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -497,13 +504,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3565829392761964415}
-  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 5, z: -15}
+  m_LocalRotation: {x: -0.12278779, y: 0.6963643, z: -0.12278779, w: -0.6963643}
+  m_LocalPosition: {x: 15, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1992278271588773555}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 270, z: 0}
 --- !u!20 &3718159359293580394
 Camera:
   m_ObjectHideFlags: 0
