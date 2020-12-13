@@ -15,6 +15,12 @@ namespace Player {
             transform.position = position;
             transform.rotation = quaternion.LookRotation(normal, Vector3.forward);
             lifeTime = duration;
+
+            //Testfor Freezable Stone
+            if(Physics.Raycast(transform.position, -transform.forward, out var hit, 0.1f)) {
+                Freezable freezable = hit.collider.GetComponent<Freezable>();
+                if (freezable) freezable.freeze(duration);
+            }
         }
 
         public void Refresh(float duration) {

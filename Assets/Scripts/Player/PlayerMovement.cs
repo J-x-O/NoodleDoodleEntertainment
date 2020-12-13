@@ -8,7 +8,10 @@ namespace Player {
         [SerializeField] private float accelerationMultiplier = 30.0f;
         [SerializeField] private float inAirMultiplier = 0.2f;
         [SerializeField] private float maxAirVelocity = 4.0f;
-        [SerializeField] private LayerMask collisionMask = new LayerMask {value = 1 << 9};
+        [SerializeField] private LayerMask collisionMask = new LayerMask{value = 1 << 9};
+
+        [SerializeField] Animator animator;
+
         [SerializeField] private PhysicMaterial defaultMaterial, slidingMaterial;
         private readonly Collider[] cache = new Collider[10];
         private new Collider collider;
@@ -39,6 +42,12 @@ namespace Player {
 
             if (Physics.Raycast(transform.position, velocity.xzz, out var hitInfo, 0.6f, collisionMask)) Bonk(hitInfo);
             rigidbody.velocity = velocity;
+
+            //set velocity for animator
+            animator.SetFloat("Velocity", velocity.x + velocity.y);
+            animator.SetFloat("HorizontalVelocity", velocity.x);
+            animator.SetFloat("VerticalVelocity", velocity.y);          
+            
         }
 
         private void Jump() {
@@ -55,13 +64,14 @@ namespace Player {
         private void GroundCheck() {
             if (Physics.SphereCast(transform.position, 0.5f, Vector3.down, out var hitInfo, 1.02f, collisionMask)) {
                 isGrounded = true;
-                var direction = math.cross(hitInfo.normal, Vector3.forward);
-                transform.rotation = quaternion.LookRotation(direction, Vector3.up);
+                //var direction = math.cross(hitInfo.normal, Vector3.forward);
+                //transform.rotation = quaternion.LookRotation(direction, Vector3.up);
                 var size = Physics.OverlapSphereNonAlloc(hitInfo.point, 0.25f, cache, new LayerMask {value = 1024});
                 if (size <= 0) {
                     ToggleSliding(false);
                     return;
                 }
+
                 for (var index = 0; index < size; index++) {
                     var hitCollider = cache[index];
                     if (hitCollider.GetComponent<IceSheet>() == null) continue;
@@ -87,6 +97,10 @@ namespace Player {
 
         internal void Boost(float3 boost) {
             rigidbody.velocity += (Vector3) boost * Time.deltaTime;
+        }
+
+        public void Stop() {
+            rigidbody.velocity = float3.zero;
         }
     }
 }
