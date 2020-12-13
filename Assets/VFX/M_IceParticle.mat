@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IceParticle 1
+  m_Name: M_IceParticle
   m_Shader: {fileID: -6465566751694194690, guid: c06c48cd115d6c84c85517e59e58c4d9,
     type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _BLENDMODE_ADD _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
