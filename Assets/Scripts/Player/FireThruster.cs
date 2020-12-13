@@ -10,13 +10,8 @@ namespace Player {
         [SerializeField] [Range(0.0f, 1.0f)] private float resourceCost;
         [SerializeField] private ResourceManager resourceManager;
 
-        private ParticleSystem particleSystem;
+        [SerializeField] ParticleSystem particleSystem;
         private bool boosting = false;
-
-        private void OnEnable() {
-            particleSystem = GetComponentInChildren<ParticleSystem>();
-            if (particleSystem == null) Debug.LogError("Add FireParticlePreset To FireThruster!");
-        }
 
         private void Update() {
             if(boosting) {

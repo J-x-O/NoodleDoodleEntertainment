@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5591717559742726390}
   - component: {fileID: 5591717559742726389}
   - component: {fileID: 5591717559742726388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pre_Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4766,13 +4766,13 @@ GameObject:
   - component: {fileID: 5591717560363410875}
   - component: {fileID: 5591717560363410873}
   - component: {fileID: 5591717560363410874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5591717560363410875
 Transform:
   m_ObjectHideFlags: 0
@@ -4844,7 +4844,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.5975e-41, z: 0, w: -21.25}
+  m_BoundingSphereOverride: {x: 0, y: 4.9057e-41, z: 0, w: -2.640625}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
