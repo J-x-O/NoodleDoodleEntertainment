@@ -17,7 +17,7 @@ namespace Player {
             lifeTime = duration;
 
             //Testfor Freezable Stone
-            if(Physics.Raycast(transform.position, -transform.forward, out var hit, 0.1f)) {
+            if (Physics.Raycast(transform.position + transform.forward * 0.05f, -transform.forward, out var hit, 0.5f, new LayerMask { value = 1<<11 })) {
                 Freezable freezable = hit.collider.GetComponent<Freezable>();
                 if (freezable) freezable.freeze(duration);
             }
