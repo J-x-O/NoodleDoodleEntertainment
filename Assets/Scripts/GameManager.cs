@@ -1,13 +1,17 @@
 ﻿using Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace {
     public class GameManager : MonoBehaviour {
         public static GameManager Instance;
-        [SerializeField] private int maxLives = 3;
+        [SerializeField] private int maxLives = 5;
         [SerializeField] private Transform player;
         private Transform currentCheckPoint;
         private int currentLives;
+
+        [SerializeField] private Text LifeCounter;
+
 
         private void Awake() {
             if (Instance != null)
@@ -19,6 +23,7 @@ namespace DefaultNamespace {
             Instance = this;
             currentCheckPoint = transform;
             currentLives = maxLives;
+            LifeCounter.text = "x" + currentLives.ToString();
         }
 
         public void SetCheckpoint(Transform checkPoint) {
@@ -30,6 +35,7 @@ namespace DefaultNamespace {
             if (currentLives > 0) {
                 player.position = currentCheckPoint.position;
                 player.GetComponent<PlayerMovement>().Stop();
+                LifeCounter.text = "x" + currentLives.ToString();
                 return;
             }
 
@@ -39,6 +45,7 @@ namespace DefaultNamespace {
 
         public void Win() {
             Debug.Log("conglaterations, you won. gg ez");
+            Application.Quit();
         }
     }
 }
