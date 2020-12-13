@@ -10,6 +10,8 @@ namespace Player {
         [SerializeField] private float maxAirVelocity = 4.0f;
         [SerializeField] private LayerMask collisionMask = new LayerMask{value = 1 << 9};
 
+        [SerializeField] private Transform model;
+
         [SerializeField] Animator animator;
 
         [SerializeField] private PhysicMaterial defaultMaterial, slidingMaterial;
@@ -31,6 +33,9 @@ namespace Player {
             var y = Input.GetAxis("Vertical");
             var acceleration = x * accelerationMultiplier;
             var deltaTime = Time.deltaTime;
+
+            model.forward = new Vector3(velocity.x,0,0);
+
             GroundCheck();
             if (!isGrounded) {
                 if (velocity.x * math.sign(acceleration) < maxAirVelocity) velocity.x += math.clamp(acceleration * inAirMultiplier * deltaTime, -maxAirVelocity, maxAirVelocity);
