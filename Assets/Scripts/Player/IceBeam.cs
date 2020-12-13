@@ -14,34 +14,49 @@ namespace Player {
         [SerializeField] private LayerMask collisionMask;
         private readonly Collider[] cache = new Collider[8];
 
-        private ParticleSystem particleSystem;
-        private bool boosting = false;
+        [SerializeField] ParticleSystem particleSystem1, particleSystem2;
 
-        private void OnEnable() {
-            particleSystem = GetComponentInChildren<ParticleSystem>();
-            if (particleSystem == null) Debug.LogError("Add FireParticlePreset To FireThruster!");
-        }
+        private bool boosting, subemitter = false;
+
 
         private void Update() {
             if(boosting) {
-                var trans = transform;
-                var origin = trans.position;
-                var aimDirection = aim.aimDirection;
-                var distance = maxDistance;
+                Transform trans = transform;
+                Vector3 origin = trans.position;
+                Vector3 aimDirection = aim.aimDirection;
+                float distance = maxDistance;
                 if (Physics.Raycast(origin, aimDirection, out var hitInfo, maxDistance, collisionMask)) {
-                    var hitPosition = hitInfo.point;
+                    Vector3 hitPosition = hitInfo.point;
+
+                    particleSystem1.transform.position = hitPosition;
+                    particleSystem1.transform.forward = hitInfo.normal;
+                    particleSystem2.transform.position = hitPosition;
+                    particleSystem2.transform.forward = hitInfo.normal;
+                    if (!subemitter) {
+                        subemitter = true;
+                        particleSystem2.Play();
+                    }
+
                     distance = math.length(hitPosition - origin);
-                    var size = Physics.OverlapSphereNonAlloc(hitPosition, 0.25f, cache, new LayerMask { value = 1024 });
+                    int size = Physics.OverlapSphereNonAlloc(hitPosition, 0.25f, cache, new LayerMask { value = 1024 });
                     if (size > 0) {
-                        for (var i = 0; i < size; i++) {
-                            var iceSheet = cache[i].GetComponent<IceSheet>();
+                        for (int i = 0; i < size; i++) {
+                            IceSheet iceSheet = cache[i].GetComponent<IceSheet>();
                             iceSheet.Refresh(iceDuration);
+
+
                         }
                     }
                     else {
-                        var iceSheet = Instantiate(iceSheetPrefab);
+                        IceSheet iceSheet = Instantiate(iceSheetPrefab);
                         iceSheet.Place(hitPosition, hitInfo.normal, iceDuration);
                     }
+                }
+                else {
+                    particleSystem1.transform.position = origin + aimDirection*maxDistance;
+                    particleSystem1.transform.rotation = Quaternion.identity;
+                    subemitter = false;
+                    particleSystem2.Stop();
                 }
 
                 float3 scale = trans.localScale;
@@ -52,8 +67,11 @@ namespace Player {
         }
 
         public void Toggle(bool value) {
-            if (value) particleSystem.Play();
-            else particleSystem.Stop();
+            if (value) particleSystem1.Play();
+            else {
+                particleSystem1.Stop();
+                particleSystem2.Stop();
+            }
             boosting = value;
         }
     }

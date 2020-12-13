@@ -32,9 +32,10 @@ public class ParticleGravitation : MonoBehaviour
 
         int length = particleSystem.GetParticles(particles);
         for (int i = 0; i < length; i++) {
-            var position = particles[i].position;
-            var direction = (gravityCenter.position - position).normalized;
-            direction *= speed * deltaTime;
+            Vector3 position = particles[i].position;
+            Vector3 distance = gravityCenter.position - position;
+            Vector3 direction = distance.normalized;
+            direction *= speed * deltaTime * distance.sqrMagnitude;
             particles[i].position += direction;
         }
         particleSystem.SetParticles(particles, length);
