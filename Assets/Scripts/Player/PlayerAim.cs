@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerAim : MonoBehaviour {
-        public float3 aimDirection;
-        private new Camera camera;
-
-        private void Awake() {
-            camera = Camera.main;
-        }
+        [SerializeField] private new Camera camera;
+        [SerializeField] private Transform center;
+        internal float3 aimDirection { get; private set; }
 
         private void Update() {
+            var trans = transform;
+            var position = trans.position;
             float3 mousePos = camera.ScreenToViewportPoint(Input.mousePosition);
-            var position = transform.position;
             float3 playerPos = camera.WorldToViewportPoint(position);
             aimDirection = new float3(math.normalize(mousePos.xy - playerPos.xy), 0);
+            trans.position = (float3)center.position + aimDirection;
+            trans.rotation = Quaternion.LookRotation(aimDirection, Vector3.up);
         }
     }
 }
