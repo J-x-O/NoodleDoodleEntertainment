@@ -71,6 +71,7 @@ namespace Player {
                     ToggleSliding(false);
                     return;
                 }
+
                 for (var index = 0; index < size; index++) {
                     var hitCollider = cache[index];
                     if (hitCollider.GetComponent<IceSheet>() == null) continue;
@@ -96,6 +97,10 @@ namespace Player {
 
         internal void Boost(float3 boost) {
             rigidbody.velocity += (Vector3) boost * Time.deltaTime;
+        }
+
+        public void Stop() {
+            rigidbody.velocity = float3.zero;
         }
     }
 }
