@@ -15,13 +15,9 @@ namespace Player {
         private bool boosting = false;
         private AudioSource audioSource;
 
-        private void Start()
-        {
+        private void Start() {
             audioSource = GetComponent<AudioSource>();
             audioSource.volume = 0.2f;
-        }
-
-        private void OnEnable() {
             normalEmision = particleSystem.emissionRate;
             normalSize = particleSystem.startSize;
         }

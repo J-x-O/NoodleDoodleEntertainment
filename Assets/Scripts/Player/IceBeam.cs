@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace Player {
     internal class IceBeam : MonoBehaviour {
+
+        //Code (Felix)
         [SerializeField] private float maxDistance;
         [SerializeField] private PlayerAim aim;
         [SerializeField] private PlayerMovement playerMovement;
@@ -13,20 +15,21 @@ namespace Player {
         [SerializeField] private IceSheet iceSheetPrefab;
         [SerializeField] private LayerMask collisionMask;
         private readonly Collider[] cache = new Collider[8];
+        
+        //Audio (Paul)
+        private AudioSource audioSource;
 
+        //Particle (Jesco)
         [SerializeField] ParticleSystem particleSystem1, particleSystem2;
         private float normalEmision, normalSize;
         private bool boosting, subemitter = false;
-        private void OnEnable() {
+
+
+        private void Start() {
             normalEmision = particleSystem1.emissionRate;
             normalSize = particleSystem1.startSize;
-        }
-        public AudioSource audioSource;
-
-        private void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.volume = 0.2f;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = 0.2f;
         }
 
         private void Update() {
@@ -76,19 +79,15 @@ namespace Player {
 
                 particleSystem1.emissionRate = normalEmision / 4 + (normalEmision * 3 / 4 * ((resourceManager.getPower() - 1) / 2));
                 particleSystem1.startSize = normalSize / 4 + (normalSize * 3 / 4 * ((resourceManager.getPower() - 1) / 2));
-
-                
             }
         }
 
         public void Toggle(bool value) {
-            if (value)
-            {
-                particleSystem1.Play();
-                audioSource.Play();
+            if (value) {
+                particleSystem1.Play();
+                audioSource.Play();
             }
-            else
-            {
+            else {
                 particleSystem1.Stop();
                 particleSystem2.Stop();
                 audioSource.Stop();
